@@ -1,0 +1,73 @@
+* {
+    box-sizing: border-box;
+    /* Colors */
+    --color-main-light: #85B79D;
+    --color-main-dark: #266150;
+    --color-background: #C0E5C8;
+    --color-accent-light: #A18276;
+    --color-accent-dark: #18020C;
+    /*--color-accent-dark: #2F0A28; */
+}
+
+body {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1.5rem;
+    background-color: var(--color-background);
+    color: var(--color-accent-dark);
+}
+
+
+/* Header styles */
+header {
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    background-color: var(--color-background);
+}
+
+.header_logo {
+    width: 80%;
+}
+
+/* mobile header */
+.header_section {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navBar {
+    display: none;
+}
+
+.navBar_hamburgerBtn {
+    background-color: transparent;
+    border: none;
+    /* border: 0.2rem solid var(--color-main-dark);
+    border-radius: 0.2rem; */
+}
+
+.navBar_hamburgerBtn[aria-expanded="true"] :is(.navBar_hamburgerTop, .navBar_hamburgerBottom) {
+    y: 45;
+}
+
+
+/* desktop header */
+@media screen and (min-width: 1024px) {
+    .navBar {
+        display: flex;
+    }
+
+    .navBar_hamburgerBtn {
+        display: none;
+    }
+}
+
+/* Utility classes */
+.flex {
+    display: flex;
+}
+
+/* just for testing */
+p {
+    font-size: 5rem;
+}
