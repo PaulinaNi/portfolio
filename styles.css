@@ -5,8 +5,8 @@
     --color-main-dark: #266150;
     --color-background: #C0E5C8;
     --color-accent-light: #A18276;
-    --color-accent-dark: #18020C;
-    /*--color-accent-dark: #2F0A28; */
+    /* --color-accent-dark: #18020C; */
+    --color-accent-dark: #2F0A28;
 }
 
 body {
@@ -19,18 +19,25 @@ body {
 
 /* Header styles */
 header {
-    padding: 1rem;
     position: sticky;
     top: 0;
     background-color: var(--color-background);
+    padding: 1rem 0 1rem 1rem;
 }
 
 .header_logo {
     width: 80%;
 }
 
+.navBar_MenuLinks {
+    font-size: 3rem;
+    font-family: 'Six Caps', sans-serif;
+    color: var(--color-main-dark);
+}
+
 /* mobile header */
 .header_section {
+    padding: 1rem 0;
     justify-content: space-between;
     align-items: center;
 }
@@ -40,31 +47,91 @@ header {
 }
 
 .navBar_hamburgerBtn {
+    padding: 0 1rem;
     background-color: transparent;
     border: none;
-    /* border: 0.2rem solid var(--color-main-dark);
-    border-radius: 0.2rem; */
 }
+
+/* mobile hamburger animation */
 
 .navBar_hamburgerBtn[aria-expanded="true"] :is(.navBar_hamburgerTop, .navBar_hamburgerBottom) {
     y: 45;
+    transform-origin: center;
+    transition: y 250ms ease-in, rotate 250ms ease-in 250ms;
+}
+
+.navBar_hamburgerBtn[aria-expanded="true"] .navBar_hamburgerMiddle {
+    transition: opacity 0s ease-in 250ms;
+}
+
+.navBar_hamburgerBtn[aria-expanded="false"] :is(.navBar_hamburgerTop, .navBar_hamburgerBottom, .navBar_hamburgerMiddle) {
+    transform-origin: center;
+    transition: rotate 250ms ease-in, y 250ms ease-in 300ms, opacity 0s ease-in 300ms;
+}
+
+.navBar_hamburgerBtn[aria-expanded="true"] .navBar_hamburgerTop {
+    rotate: 45deg;
+}
+
+.navBar_hamburgerBtn[aria-expanded="true"] .navBar_hamburgerMiddle {
+    opacity: 0;
+}
+
+.navBar_hamburgerBtn[aria-expanded="true"] .navBar_hamburgerBottom {
+    rotate: -45deg;
+}
+
+.navBar_MenuMobile {
+    background-color: var(--color-main-light);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 1rem;
+    width: 100vw;
+}
+
+.navBar_Mobile {
+    display: flex;
+    align-items: flex-end;
 }
 
 
 /* desktop header */
 @media screen and (min-width: 1024px) {
+    header {
+        justify-content: space-between;
+        align-items: center;
+    }
+
     .navBar {
+        display: block;
+    }
+
+    .navBar_Menu {
         display: flex;
+        flex-direction: row;
+    }
+
+    .navBar_MenuLinks {
+        padding-right: 1rem;
     }
 
     .navBar_hamburgerBtn {
         display: none;
+    }
+
+    .header_section {
+        width: 60vw;
     }
 }
 
 /* Utility classes */
 .flex {
     display: flex;
+}
+
+.flex_column {
+    flex-direction: column;
 }
 
 /* just for testing */
